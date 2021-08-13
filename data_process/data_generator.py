@@ -2,7 +2,7 @@
 
 import numpy as np
 import math
-from keras.utils import Sequence
+from tensorflow.keras.utils import Sequence
 
 
 class DataGenerator(Sequence):

@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
 
-import keras.backend.tensorflow_backend as ktf
+import os
+os.environ["TF_KERAS"] = "1"
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
+import tensorflow.python.keras.backend as ktf
+
 
 from trainer.trainer import *
 from data_process.data_loader import *
 
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
+sess = tf.compat.v1.Session(config=config)
 ktf.set_session(sess)
 
 
-dir = 'your_bert_path'
+dir = 'bert'
 
 bert_dir = os.path.join(dir, 'uncased_L-12_H-768_A-12')
 bert_vocab_file = os.path.join(bert_dir, 'vocab.txt')

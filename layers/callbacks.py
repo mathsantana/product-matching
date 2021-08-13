@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from keras.callbacks import Callback
-from keras import backend as K
-from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, mean_absolute_error
-import numpy as np
+from tensorflow.keras.callbacks import Callback
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 import os
 from absl import logging
-import math
-from data_process.data_generator import DataGenerator
 
 
 class PMMetric(Callback):

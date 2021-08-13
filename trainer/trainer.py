@@ -2,13 +2,10 @@
 
 import os
 import codecs
-import json
 
-from sklearn.model_selection import KFold
 
-from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.preprocessing.sequence import pad_sequences
-from keras.utils import to_categorical
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from configs.config import Config
 from models.models import *
@@ -54,7 +51,7 @@ class Trainer(object):
             os.mkdir(self.store_name)
         self.config.max_len_bert = max_len_bert
         if bert_trainable:
-            self.optimizer = Adam(lr=2e-5)
+            self.optimizer = Adam(learning_rate=2e-5)
         else:
             self.optimizer = 'adam'
         self.bert_config_file = bert_config_file
@@ -143,7 +140,7 @@ class Trainer(object):
             valid_generator = DataGenerator(inputs_valid, y_valid,
                                             batch_size=self.config.batch_size)
 
-            self.model.fit_generator(train_generator, epochs=self.config.num_epochs,
+            self.model.fit(train_generator, epochs=self.config.num_epochs,
                                      verbose=self.config.verbose_training,
                                      validation_data=valid_generator,
                                      callbacks=self.callbacks)

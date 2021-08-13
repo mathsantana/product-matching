@@ -3,10 +3,10 @@
 import os
 import numpy as np
 import tensorflow as tf
-import keras.backend as K
-from keras.layers import *
-from keras.models import Model
-from keras.optimizers import Adam
+import tensorflow.keras.backend as K
+from tensorflow.keras.layers import *
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
 from keras_bert import load_trained_model_from_checkpoint as bert_load
 
 from layers import *
@@ -99,7 +99,7 @@ def binary_focal_loss(gamma=2, alpha=0.75):
 class BertModel(BaseModel):
     def __init__(self, config, use_bert, bert_type, max_len_bert,
                  bert_trainable=False, bert_config_file=None, bert_checkpoint_file=None,
-                 optimizer=Adam(lr=2e-5), feature=False):
+                 optimizer=Adam(learning_rate=2e-5), feature=False):
         self.optimizer = optimizer
         super(BertModel, self).__init__(config, use_bert, 1, max_len_bert,
                                         bert_trainable=bert_trainable, bert_config_file=bert_config_file,
@@ -129,7 +129,7 @@ class BertModel(BaseModel):
 class BertModelFocal(BaseModel):
     def __init__(self, config, use_bert, bert_type, max_len_bert,
                  bert_trainable=False, bert_config_file=None, bert_checkpoint_file=None,
-                 optimizer=Adam(lr=2e-5), feature=False):
+                 optimizer=Adam(learning_rate=2e-5), feature=False):
         self.optimizer = optimizer
         super(BertModelFocal, self).__init__(config, use_bert, 1, max_len_bert,
                                              bert_trainable=bert_trainable, bert_config_file=bert_config_file,

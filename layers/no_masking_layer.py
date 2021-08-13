@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from keras.engine.topology import Layer
+from tensorflow.keras.layers import Layer
 
 
 class NonMaskingLayer(Layer):

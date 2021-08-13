@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import keras.backend.tensorflow_backend as ktf
+import tensorflow.python.keras.backend as ktf
 
 from trainer.trainer import *
 from data_process.data_loader import *
 
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
+sess = tf.compat.v1.Session(config=config)
 ktf.set_session(sess)
 
 
